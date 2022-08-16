@@ -9,12 +9,14 @@ class Negociacao {
         // this.#valor = valor;
 
         //Por convenção, nunca se deve alterar propriedades com o underline na frente
-        this._data = data;
+        //EXPLICAÇÃO: Agora se alguém quiser moditicar o bojeto de data do constructor, modificará o objeto criado previamente no intuito de moficar, e não de fato a data do constructor
+        // https://cursos.alura.com.br/forum/topico-referencia-do-objeto-153913
+        this._data = new Date(data.getTime()); //Criando uma cópia do objeto para que não seja mudado
         this._quantidade = quantidade;
         this._valor = valor;
 
         // Congelando a instância
-        // PROBLEMA: O freeza é um método raso. Até conegal o valor e quantidade. Mas a data ele não consegue congelar os métodos referentes ao objeto. Como o setDa();
+        // PROBLEMA: O freeza é um método raso. Até conegal o valor e quantidade. Mas a data ele não consegue congelar os métodos referentes ao objeto. Como o setDa(); Já a quantidade, não tem métodos para mudar o valor;
         Object.freeze(this); //This é uma variável implícita para lidar instância
 
 
@@ -31,7 +33,10 @@ class Negociacao {
     }
 
     get data() {
-        return this._data;
+        // return this._data;
+        //Criando uma cópia para a data original não ser alterada
+        return new Date(this._data.getTime());
+
 
     }
 

@@ -84,18 +84,16 @@
     
 
     <script>
-        var n1 = new Negociacao(new Date, 5, 700);
+
+        var hoje = new Date();
+        var n1 = new Negociacao(hoje, 5, 700);
+        hoje.setDate(20);
+        console.log(n1.data);
+
 
         // Congela a variável/istância. Então não posso fazer nada com ela.
         // Object.freeze(n1);
-        // console.log(Object.isFrozen(n1));
-
-        n1._quantidade = 13123;
-        console.log(n1.quantidade);
-
-        console.log(n1.data);
-        n1.data.setDate(17);
-        console.log(n1.data);       
+        // console.log(Object.isFrozen(n1));       
         </script>
 
 
