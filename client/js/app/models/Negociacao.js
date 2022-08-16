@@ -13,6 +13,11 @@ class Negociacao {
         this._quantidade = quantidade;
         this._valor = valor;
 
+        // Congelando a instância
+        // PROBLEMA: O freeza é um método raso. Até conegal o valor e quantidade. Mas a data ele não consegue congelar os métodos referentes ao objeto. Como o setDa();
+        Object.freeze(this); //This é uma variável implícita para lidar instância
+
+
     }
 
     //Função = Função fora da classe
