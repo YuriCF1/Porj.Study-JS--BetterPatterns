@@ -11,7 +11,7 @@ class NegociacaoController {
   adiciona(event) {
     event.preventDefault();
     
-    let helper = new DateHelper();
+    // let helper = new DateHelper(); //Não preciso mais instanciar para chamar a variável helper, pois os métodos são statitics
 
     // // ... = Spread Operator. Desmembra o array. Primeiro item do array, sendo primeiro parâmetro do Date, e etc.
     // let data = new Date(
@@ -33,13 +33,13 @@ class NegociacaoController {
 
     // let data = new Date(this._inputData.value.replace(/-/g,',')); //Também funciona
     let negociacao = new Negociacao(
-      helper.textoParaData(this._inputData.value),
+      DateHelper.textoParaData(this._inputData.value), //Chamando a classe diretamente com os métodos estáticos
       this._inputQuantidade.value,
       this._inputValor.value
-    );
+      );
 
     console.log(negociacao);
-    console.log(helper.dataParaTexto(negociacao.data));
+    console.log(DateHelper.dataParaTexto(negociacao.data));
 
   }
 }
