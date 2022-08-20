@@ -7,6 +7,8 @@ class NegociacaoView {
     // Quando a Arrow function só tem um retorno, uma 'única linha', não precisa de retorno
     //  Immediately Invoked Function Expression (funcion(){})() são funcões que são executadas assim que são iniciadas
     // https://imasters.com.br/front-end/sobre-funcoes-imediatas-javascript-iife
+
+    // Reduce = recebe uma variável qualquer, mais os itens do array (n). Invoca arrow function que soma o total mais o volume do item 'n'. Passando o valor inicial do Total como 0.0
     return ` 
     <table class="table table-hover table-bordered">
         <thead>
@@ -19,7 +21,8 @@ class NegociacaoView {
         </thead>
 
         <tbody>
-          ${model.Negociacoes.map(n =>
+          ${model.Negociacoes.map(
+            (n) =>
               `
               <tr>
                 <td>${DateHelper.dataParaTexto(n.data)}</td>
@@ -33,18 +36,24 @@ class NegociacaoView {
   
         <tfoot>
             <td colspan="3"></td>
-            <td>${
-              (function(){
-                let total = 0;
-                model.Negociacoes.forEach(n => total += n.volume);
-                return total;
-              })()
-            }</td>
+            <td>${model.Negociacoes.reduce((total, n) => total + n.volume, 0.0)}</td>
         </tfoot>
       </table>
 
     `;
   }
+
+  // Forma 1 de fazer a tabela
+  /*
+    <td>${
+      (function(){
+        let total = 0;
+        model.Negociacoes.forEach(n => total += n.volume);
+        return total;
+      })()
+    }
+    </td>
+  */
 
   update(model) {
     this._elemento.innerHTML = this._template(model);
