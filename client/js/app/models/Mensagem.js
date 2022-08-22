@@ -1,7 +1,7 @@
 class Mensagem{
     constructor(texto = ''){ //Se eu não passar a mensagem, o padrão é vazio
         this._texto = texto;
-
+        
     }
 
     get texto(){

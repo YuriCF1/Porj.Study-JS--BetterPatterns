@@ -1,9 +1,11 @@
-class NegociacaoView {
-  constructor(elemento) {
-    this._elemento = elemento;
-  }
+class NegociacaoView extends View{
+  // constructor(elemento) {
+  //   // Chamando o constructor da classe pai
+  //   super(elemento)
 
-  _template(model) {
+  // }
+
+  template(model) {
     // Quando a Arrow function só tem um retorno, uma 'única linha', não precisa de retorno
     //  Immediately Invoked Function Expression (funcion(){})() são funcões que são executadas assim que são iniciadas
     // https://imasters.com.br/front-end/sobre-funcoes-imediatas-javascript-iife
@@ -55,7 +57,7 @@ class NegociacaoView {
     </td>
   */
 
-  update(model) {
-    this._elemento.innerHTML = this._template(model);
-  }
+  // update(model) {
+  //   this._elemento.innerHTML = this._template(model);
+  // }
 }
